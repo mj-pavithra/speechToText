@@ -1,0 +1,142 @@
+/* Reset default styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f8f8f8;
+    padding: 20px;
+}
+
+h2 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333; /* Darken the color */
+}
+.waiting {
+    position: relative;
+    top: 10px;
+    animation: colorChange 1s infinite; /* Apply the animation */
+}
+
+@keyframes colorChange {
+    0% {
+        color: #666; /* Dark gray */
+    }
+    50% {
+        color: #ccc; /* Light gray */
+    }
+    100% {
+        color: #666; /* Dark gray */
+    }
+}
+
+.dot1{
+    
+    animation: colorChange2 1s infinite; /* Apply the animation */
+
+}
+
+.dot2{
+    
+    animation: colorChange2 2s infinite; /* Apply the animation */
+
+}
+
+.dot3{
+    
+    animation: colorChange2 3s infinite; /* Apply the animation */
+
+}
+
+@keyframes colorChange2 {
+        0% {
+            color: #fff; /* Dark gray */
+        }
+        25% {
+            color: #ccc; /* Light gray */
+        }
+        50% {
+            color: #666; /* Dark gray */
+        
+        }
+}
+
+
+.drop-area {
+    border: 2px dashed #ccc;
+    min-height:200px ;
+    background-color: #fff;
+    color: #444;
+    text-align: center;
+    padding: 20px;
+    cursor: pointer;
+    transition: border-color 0.3s ease, background-color 0.3s ease, color 0.3s ease; /* Add transition for smoother hover effect */
+}
+
+.drop-area:hover {
+    border-color: #999;
+    background-color: #f5f5f5; /* Lighten the background color */
+}
+
+input[type="file"] {
+    display: none;
+}
+
+p {
+    margin-bottom: 10px;
+    color: #666; /* Slightly darken the color */
+}
+
+button {
+    display: block;
+    margin: 10px auto;
+    padding: 10px 20px;
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+button:hover {
+    background-color: #0056b3;
+}
+
+button:disabled {
+    background-color: #ccc;
+    cursor: not-allowed;
+}
+
+ul {
+    list-style-type: none;
+    margin-top: 20px;
+}
+
+li {
+    margin-bottom: 10px;
+}
+
+audio {
+    width: 100%;
+    margin-top: 20px;
+}
+
+/* Responsive Styles */
+@media screen and (max-width: 600px) {
+    h2 {
+        font-size: 24px; /* Decrease font size for smaller screens */
+    }
+    
+    .drop-area {
+        padding: 15px; /* Decrease padding for smaller screens */
+    }
+    
+    button {
+        width: 100%; /* Make buttons full width for smaller screens */
+    }
+}

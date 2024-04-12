@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Audio File Upload</title>
+    <script src="https://cdn.jsdelivr.net/npm/vue@3"></script>
+    <link rel="stylesheet" href="styles.css">
+
+    <style>
+        .highlighted {
+            background-color: yellow; /* Change the background color to indicate highlighting */
+        }
+    </style>
+</head>
+<body>
+    <div id="app">
+        <div id="audio-app">
+            <h2>Upload an Audio File</h2>
+            <div class="drop-area" @dragover.prevent="handleDragOver" @drop.prevent="handleDrop" @click="triggerFileInput">
+                Drop audio files here or click to upload
+            </div>
+            <input type="file" id="fileInput" @change="handleAudioUpload" style="display: none" />
+            <p v-if="audioFile">{{ audioFile.name }}</p>
+            <audio ref="audioPlayer" v-if="audioUrl" controls :src="audioUrl" @timeupdate="syncHighlighting"></audio>
+            <button @click="playAudio" :disabled="!audioUrl">Play Audio</button>
+            <button @click="submitAudio" :disabled="!audioFile || waiting">Transcribe Audio</button>
+            <p class="waiting" v-if="waiting">Waiting for response<span class="dot1">.</span><span class="dot2">.</span><span class="dot3">.</span></p>
+            <p>Transcription:</p>
+            <p>
+                <span v-for="utterance in utterances" :key="utterance.start" :class="{ 'highlighted': isHighlighted(utterance) }">
+                    {{ utterance.word }} 
+                </span>
+            </p>
+        </div>
+    </div>
+
+    <script src="audioInput.js" type="module"></script>
+</body>
+</html>
